@@ -27,7 +27,6 @@
 #define CF_CMD_H
 
 #include "cfe.h"
-#include "cf_app.h"
 #include "cf_utils.h"
 
 /**

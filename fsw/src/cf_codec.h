@@ -27,7 +27,6 @@
 #define CF_CODEC_H
 
 #include "cfe.h"
-#include "cf_cfdp_pdu.h"
 #include "cf_logical_pdu.h"
 
 /**

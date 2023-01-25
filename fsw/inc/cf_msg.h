@@ -29,7 +29,6 @@
 #include <cfe.h>
 #include <cf_platform_cfg.h>
 #include <cf_extern_typedefs.h>
-#include <cf_tbldefs.h>
 
 #define CF_ALL_CHANNELS (255)
 #define CF_ALL_POLLDIRS (CF_ALL_CHANNELS)

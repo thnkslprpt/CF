@@ -26,7 +26,6 @@
 #ifndef CF_UTILS_H
 #define CF_UTILS_H
 
-#include "cf_cfdp.h"
 #include "cf_app.h"
 #include "cf_assert.h"
 

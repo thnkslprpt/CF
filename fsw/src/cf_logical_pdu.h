@@ -39,7 +39,6 @@
 #define CF_LOGICAL_PDU_H
 
 #include "common_types.h"
-#include "cf_platform_cfg.h"
 
 /* many enum values in this file are based on CFDP-defined values */
 #include "cf_cfdp_pdu.h"
