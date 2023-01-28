@@ -54,7 +54,7 @@ typedef struct
 {
     CF_HkPacket_t hk;
 
-    uint32 run_status;
+    uint32 RunStatus;
 
     CFE_SB_PipeId_t cmd_pipe;
 

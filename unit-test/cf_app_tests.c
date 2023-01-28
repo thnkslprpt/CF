@@ -601,7 +601,7 @@ void Test_CF_AppMain_CallTo_CF_Init_DoNotReturn_CFE_SUCCESS_Set_CF_AppData_run_s
     UtAssert_STUB_COUNT(CFE_ES_PerfLogAdd, 2);
     UtAssert_STUB_COUNT(CFE_ES_RunLoop, 1);
     UtAssert_STUB_COUNT(CFE_EVS_SendEvent, 0);
-    UtAssert_UINT32_EQ(CF_AppData.run_status, CFE_ES_RunStatus_APP_ERROR);
+    UtAssert_UINT32_EQ(CF_AppData.RunStatus, CFE_ES_RunStatus_APP_ERROR);
 }
 
 void Test_CF_AppMain_CFE_SB_ReceiveBuffer_Cases(void)

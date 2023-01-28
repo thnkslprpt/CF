@@ -82,7 +82,7 @@ void CF_CheckTables(void)
         {
             CFE_EVS_SendEvent(CF_EID_ERR_INIT_TBL_CHECK_REL, CFE_EVS_EventType_ERROR,
                               "CF: error in CFE_TBL_ReleaseAddress (check), returned 0x%08lx", (unsigned long)status);
-            CF_AppData.run_status = CFE_ES_RunStatus_APP_ERROR;
+            CF_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
         }
 
         status = CFE_TBL_Manage(CF_AppData.config_handle);
@@ -90,7 +90,7 @@ void CF_CheckTables(void)
         {
             CFE_EVS_SendEvent(CF_EID_ERR_INIT_TBL_CHECK_MAN, CFE_EVS_EventType_ERROR,
                               "CF: error in CFE_TBL_Manage (check), returned 0x%08lx", (unsigned long)status);
-            CF_AppData.run_status = CFE_ES_RunStatus_APP_ERROR;
+            CF_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
         }
 
         status = CFE_TBL_GetAddress((void *)&CF_AppData.config_table, CF_AppData.config_handle);
@@ -98,7 +98,7 @@ void CF_CheckTables(void)
         {
             CFE_EVS_SendEvent(CF_EID_ERR_INIT_TBL_CHECK_GA, CFE_EVS_EventType_ERROR,
                               "CF: failed to get table address (check), returned 0x%08lx", (unsigned long)status);
-            CF_AppData.run_status = CFE_ES_RunStatus_APP_ERROR;
+            CF_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
         }
     }
 }
@@ -209,7 +209,7 @@ int32 CF_Init(void)
     static const CFE_SB_MsgId_Atom_t MID_VALUES[] = {CF_CMD_MID, CF_SEND_HK_MID, CF_WAKE_UP_MID};
     uint32                           i;
 
-    CF_AppData.run_status = CFE_ES_RunStatus_APP_RUN;
+    CF_AppData.RunStatus = CFE_ES_RunStatus_APP_RUN;
 
     CFE_MSG_Init(&CF_AppData.hk.tlm_header.Msg, CFE_SB_ValueToMsgId(CF_HK_TLM_MID), sizeof(CF_AppData.hk));
 
@@ -330,12 +330,12 @@ void CF_AppMain(void)
     status = CF_Init();
     if (status != CFE_SUCCESS)
     {
-        CF_AppData.run_status = CFE_ES_RunStatus_APP_ERROR;
+        CF_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
     }
 
     msg = NULL;
 
-    while (CFE_ES_RunLoop(&CF_AppData.run_status))
+    while (CFE_ES_RunLoop(&CF_AppData.RunStatus))
     {
         CFE_ES_PerfLogExit(CF_PERF_ID_APPMAIN);
 
@@ -354,7 +354,7 @@ void CF_AppMain(void)
         {
             CFE_EVS_SendEvent(CF_EID_ERR_INIT_MSG_RECV, CFE_EVS_EventType_ERROR,
                               "CF: exiting due to CFE_SB_ReceiveBuffer error 0x%08lx", (unsigned long)status);
-            CF_AppData.run_status = CFE_ES_RunStatus_APP_ERROR;
+            CF_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
         }
         else
         {
@@ -363,5 +363,5 @@ void CF_AppMain(void)
     }
 
     CFE_ES_PerfLogExit(CF_PERF_ID_APPMAIN);
-    CFE_ES_ExitApp(CF_AppData.run_status);
+    CFE_ES_ExitApp(CF_AppData.RunStatus);
 }
