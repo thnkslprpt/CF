@@ -3051,8 +3051,8 @@ void Test_CF_CmdWriteQueue_Success_type_UpAnd_q_All(void)
 {
     /* Arrange */
     CF_UT_cmd_write_q_buf_t        utbuf;
-    CF_WriteQueueCmd_t *           wq = &utbuf.wq;
-    CFE_SB_Buffer_t *              arg_msg  = &utbuf.buf;
+    CF_WriteQueueCmd_t *           wq      = &utbuf.wq;
+    CFE_SB_Buffer_t *              arg_msg = &utbuf.buf;
     CF_WrappedOpenCreate_context_t context_CF_WrappedOpenCreate;
     int32                          forced_return_CF_WriteTxnQueueDataToFile     = 0;
     int32                          forced_return_CF_WriteHistoryQueueDataToFile = 0;
@@ -3327,8 +3327,8 @@ void Test_CF_CmdWriteQueue_Success_type_DownAnd_q_Pend(void)
 {
     /* Arrange */
     CF_UT_cmd_write_q_buf_t        utbuf;
-    CF_WriteQueueCmd_t *           wq = &utbuf.wq;
-    CFE_SB_Buffer_t *              arg_msg  = &utbuf.buf;
+    CF_WriteQueueCmd_t *           wq      = &utbuf.wq;
+    CFE_SB_Buffer_t *              arg_msg = &utbuf.buf;
     CF_WrappedOpenCreate_context_t context_CF_WrappedOpenCreate;
     int32                          forced_return_CF_WriteTxnQueueDataToFile = 0;
     uint16                         initial_hk_cmd_counter                   = Any_uint16();
