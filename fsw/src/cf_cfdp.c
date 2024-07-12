@@ -1026,7 +1026,7 @@ CFE_Status_t CF_CFDP_InitEngine(void)
 
     if (ret == CFE_SUCCESS)
     {
-        CF_AppData.engine.enabled = 1;
+        CF_AppData.engine.enabled = true;
     }
 
     return ret;
@@ -1794,7 +1794,7 @@ void CF_CFDP_DisableEngine(void)
     static const CF_QueueIdx_t CLOSE_QUEUES[] = {CF_QueueIdx_RX, CF_QueueIdx_TXA, CF_QueueIdx_TXW};
     CF_Channel_t *             chan;
 
-    CF_AppData.engine.enabled = 0;
+    CF_AppData.engine.enabled = false;
 
     for (i = 0; i < CF_NUM_CHANNELS; ++i)
     {

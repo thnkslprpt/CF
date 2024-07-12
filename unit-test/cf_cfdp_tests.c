@@ -1016,7 +1016,7 @@ void Test_CF_CFDP_CycleTx(void)
     /* need to set dequeue_enabled so it enters the actual logic */
     UT_CFDP_SetupBasicTestState(UT_CF_Setup_TX, NULL, &chan, NULL, &txn, &config);
     CF_AppData.hk.Payload.channel_hk[UT_CFDP_CHANNEL].q_size[0] = 10;
-    CF_AppData.engine.enabled                                   = 1;
+    CF_AppData.engine.enabled                                   = true;
     config->chan[UT_CFDP_CHANNEL].dequeue_enabled               = 1;
 
     /* nominal call, w/chan->cur non-null */
@@ -1216,7 +1216,7 @@ void Test_CF_CFDP_ProcessPlaybackDirectory(void)
     memset(&pb, 0, sizeof(pb));
     memset(dirent, 0, sizeof(dirent));
     UT_CFDP_SetupBasicTestState(UT_CF_Setup_NONE, NULL, &chan, &history, &txn, &config);
-    CF_AppData.engine.enabled = 1;
+    CF_AppData.engine.enabled = true;
 
     /* diropen is true but num_ts is high so operations are restricted */
     pb.busy    = true;
@@ -1339,7 +1339,7 @@ void Test_CF_CFDP_CycleEngine(void)
     UtAssert_VOIDCALL(CF_CFDP_CycleEngine());
 
     /* enabled but frozen */
-    CF_AppData.engine.enabled                                = 1;
+    CF_AppData.engine.enabled                                = true;
     CF_AppData.hk.Payload.channel_hk[UT_CFDP_CHANNEL].frozen = 1;
     UtAssert_VOIDCALL(CF_CFDP_CycleEngine());
 
@@ -1510,7 +1510,7 @@ void Test_CF_CFDP_DisableEngine(void)
      */
 
     /* nominal call */
-    CF_AppData.engine.enabled = 1;
+    CF_AppData.engine.enabled = true;
     UtAssert_VOIDCALL(CF_CFDP_DisableEngine());
     UtAssert_STUB_COUNT(CFE_SB_DeletePipe, CF_NUM_CHANNELS);
     UtAssert_BOOL_FALSE(CF_AppData.engine.enabled);

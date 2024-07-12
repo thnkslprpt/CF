@@ -3562,7 +3562,7 @@ void Test_CF_CmdEnableEngine_WithEngineNotEnableInitSuccessAndIncrementCmdCounte
 
     memset(&utbuf, 0, sizeof(utbuf));
 
-    CF_AppData.engine.enabled = 0; /* 0 is not enabled */
+    CF_AppData.engine.enabled = false;
 
     UT_SetDefaultReturnValue(UT_KEY(CF_CFDP_InitEngine), forced_return_CF_CFDP_InitEngine);
 
@@ -3590,7 +3590,7 @@ void Test_CF_CmdEnableEngine_WithEngineNotEnableFailsInitSendEventAndIncrementEr
 
     memset(&utbuf, 0, sizeof(utbuf));
 
-    CF_AppData.engine.enabled = 0; /* 0 is not enabled */
+    CF_AppData.engine.enabled = false;
 
     UT_SetDefaultReturnValue(UT_KEY(CF_CFDP_InitEngine), forced_return_CF_CFDP_InitEngine);
 
@@ -3617,7 +3617,7 @@ void Test_CF_CmdEnableEngine_WithEngineEnableFailsSendEventAndIncrementErrCounte
 
     memset(&utbuf, 0, sizeof(utbuf));
 
-    CF_AppData.engine.enabled = 1; /* 1 is enabled */
+    CF_AppData.engine.enabled = true;
 
     CF_AppData.hk.Payload.counters.err = initial_hk_err_counter;
 
@@ -3648,7 +3648,7 @@ void Test_CF_CmdDisableEngine_SuccessWhenEngineEnabledAndIncrementCmdCounter(voi
 
     memset(&utbuf, 0, sizeof(utbuf));
 
-    CF_AppData.engine.enabled = 1; /* 1 is enabled */
+    CF_AppData.engine.enabled = true;
 
     CF_AppData.hk.Payload.counters.cmd = initial_hk_cmd_counter;
 
@@ -3672,7 +3672,7 @@ void Test_CF_CmdDisableEngine_WhenEngineDisabledAndIncrementErrCounterThenFail(v
 
     memset(&utbuf, 0, sizeof(utbuf));
 
-    CF_AppData.engine.enabled = 0; /* 0 is not enabled */
+    CF_AppData.engine.enabled = false;
 
     CF_AppData.hk.Payload.counters.err = initial_hk_err_counter;
 
