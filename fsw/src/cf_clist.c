@@ -189,7 +189,6 @@ void CF_CList_Traverse(CF_CListNode_t *start, CF_CListFn_t fn, void *context)
 {
     CF_CListNode_t *node = start;
     CF_CListNode_t *node_next;
-    int             last = 0;
 
     if (node)
     {
@@ -197,10 +196,6 @@ void CF_CList_Traverse(CF_CListNode_t *start, CF_CListFn_t fn, void *context)
         {
             /* set node_next in case callback removes this node from the list */
             node_next = node->next;
-            if (node_next == start)
-            {
-                last = 1;
-            }
             if (!CF_CListTraverse_Status_IS_CONTINUE(fn(node, context)))
             {
                 break;
@@ -214,7 +209,7 @@ void CF_CList_Traverse(CF_CListNode_t *start, CF_CListFn_t fn, void *context)
                 start = node_next;
             }
             node = node_next;
-        } while (!last);
+        } while (node_next != start);
     }
 }
 
